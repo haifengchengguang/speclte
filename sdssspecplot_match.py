@@ -36,6 +36,7 @@ for i in trange(len(df['ra'])):
                         for i in range(len(testspec[j].data)):
                             plt_y[i] = testspec[j].data[i][0]
                             plt_x[i] = pow(10, testspec[j].data[i][1])
+                        plt_y = np.clip(plt_y, -80, 80)
                         plt.plot(plt_x, plt_y, color='black', linewidth=0.1)
                         plt.vlines(6708, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='Li',
                                    linewidth=0.2)
@@ -43,7 +44,7 @@ for i in trange(len(df['ra'])):
                                    linewidth=0.2)
                         plt.vlines(7000, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='K',
                                    linewidth=0.2)
-                        # plt.xlim(2980, 11230)
+                        #plt.ylim(-500, 500)
                         plt.title(fileName1 + '-table' + str(j))
                         plt.xlabel('wavelength/Angstrom')
                         plt.ylabel('flux')
@@ -56,7 +57,8 @@ for i in trange(len(df['ra'])):
                         plt.rcParams['savefig.dpi'] = 300  # 图片像素
                         plt.rcParams['figure.dpi'] = 300  # 分辨率
                         plt.savefig('match/' + fileName1 + '-table' + str(j) + '.png')
-                        # plt.show()
+                        #plt.show()
+                        plt.close()
         # else:break
 
 # file_list = os.listdir(filepath)

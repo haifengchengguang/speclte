@@ -3,6 +3,7 @@ import os
 import numpy as np
 from astropy.io import fits
 #testspec=fits.open('/Users/jeffreyburggraf/Documents/SDSS/spec-1234-55555-555.fits')
+from cv2 import cv2
 from matplotlib import pyplot as plt
 from matplotlib.ticker import MultipleLocator
 from tqdm import tqdm
@@ -34,8 +35,9 @@ for fileName in tqdm(file_list):
                     for i in range(len(testspec[j].data)):
                         plt_y[i] = testspec[j].data[i][0]
                         plt_x[i] = pow(10, testspec[j].data[i][1])
-                    plt_y = np.clip(plt_y, -80, 80)
-                    plt.plot(plt_x, plt_y, color='black', linewidth=0.1)
+                    dst = cv2.GaussianBlur(src=plt_y, ksize=(29, 29), sigmaX=5)
+                    plt_y = np.clip(dst, -80, 80)
+                    plt.plot(plt_x, dst, color='black', linewidth=0.5)
                     plt.vlines(6708, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='Li',
                                linewidth=0.2)
                     plt.vlines(8183.8, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='Na',

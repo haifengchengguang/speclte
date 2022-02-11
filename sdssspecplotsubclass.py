@@ -37,7 +37,7 @@ for fileName in tqdm(file_list):
                         plt_x[i] = pow(10, testspec[j].data[i][1])
                     #plt_y=np.clip(plt_y,-80,80)
                     dst = cv2.GaussianBlur(src=plt_y, ksize=(29, 29), sigmaX=5)
-                    #plt_y = np.clip(dst, -80, 80)
+                    plt_y = np.clip(dst, -80, 80)
                     plt.plot(plt_x, dst, color='black', linewidth=0.5)
                     plt.vlines(6708, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='Li',
                                linewidth=0.2)

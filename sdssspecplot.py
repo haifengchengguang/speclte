@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 from matplotlib.ticker import MultipleLocator
 from tqdm import tqdm
 
-filepath="G:\\fits1\\sdss"
+filepath=r"F:\Downloads\apogeedown1\dr17\sdss_all"
 file_list = os.listdir(filepath)
 count1=0
 for fileName in tqdm(file_list):
@@ -40,6 +40,8 @@ for fileName in tqdm(file_list):
                     plt.plot(plt_x, dst, color='black', linewidth=0.5)
                     plt.vlines(6708, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='Li',
                                linewidth=0.2)
+                    plt.vlines(6563, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='H-alpha',
+                               linewidth=0.2)
                     plt.vlines(8183.8, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='Na',
                                linewidth=0.2)
                     plt.vlines(7000, ymin=min(plt_y), ymax=max(plt_y), colors="c", linestyles="solid", label='K',
@@ -56,7 +58,7 @@ for fileName in tqdm(file_list):
                     plt.tick_params(labelsize=5)
                     plt.rcParams['savefig.dpi'] = 300  # 图片像素
                     plt.rcParams['figure.dpi'] = 300  # 分辨率
-                    plt.savefig('sdsslatem6_1/' + fileName1 + '-table' + str(j) + '.png')
+                    plt.savefig('match1/' + fileName1 + '-table' + str(j) + '.png')
                     #plt.show()
                     plt.close()
 #else:break

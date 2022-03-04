@@ -52,7 +52,7 @@ while True:
 for i in range(len(camera_g_wavelength)):
     waveint = int(camera_g_wavelength[i])
     x_index = int(np.argwhere(x == waveint))
-    print("x_index:",x_index)
+    #print("x_index:",x_index)
     g_mag += camera_g_flux[i] * dst[x_index] * 25
 if r_mag==g_mag:
     print("true")

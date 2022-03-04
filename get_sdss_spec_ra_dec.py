@@ -26,7 +26,7 @@ for everyrow in tqdm(Lmore15.iterrows()):
     #print(plate,mjd,fiberid)
 
     specs = SDSS.get_spectra(coordinates=c,radius=(1/1200)*u.degree,data_release=17)    #获取每一行的数据
-
+    #photo=SDSS.get_images(coordinates=c,radius=(1/1200)*u.degree,data_release=17)
     if specs is None:
         print()
     else:
